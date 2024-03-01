@@ -59,13 +59,9 @@ int main(){
 	setlocale(LC_ALL, "");
 	for(I = 0; I <= numeroMaximo; I++){
 		random = rand();
+		vetorInsert[I] = random;
 		vetorBubble[I] = random;
-	}
-	
-	
-	for(I = 0; I < numeroMaximo; I++){
-		vetorInsert[I] = vetorBubble[I]; 
-		vetorSelect[I] = vetorBubble[I];
+		vetorSelect[I] = random;
 	}
 	
 	inicio = clock();
@@ -74,7 +70,7 @@ int main(){
 	
 	printf("Bubble Sort: ");
 	duracao = fim - inicio;
-	printf("\nDuração: %f", duracao);
+	printf("\nDuração: %f", (duracao * 1000 / CLOCKS_PER_SEC));
 	
 	inicio = clock();
 	insertSort(vetorInsert, 10000);
@@ -82,7 +78,7 @@ int main(){
 	
 	printf("\nInsert Sort: ");
 	duracao = fim - inicio;
-	printf("\nDuração: %f", duracao);
+	printf("\nDuração: %f", (duracao * 1000 / CLOCKS_PER_SEC));
 	
 	inicio = clock();
 	selectSort(vetorSelect, 10000);
@@ -90,5 +86,5 @@ int main(){
 	
 	printf("\nSelect Sort: ");
 	duracao = fim - inicio;
-	printf("\nDuração: %f", duracao);	
+	printf("\nDuração: %f", (duracao * 1000 / CLOCKS_PER_SEC));	
 }
