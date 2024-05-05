@@ -1,0 +1,101 @@
+#include "lista.h"
+#include <stdio.h>
+#include <stdlib.h>
+void iniciarLista(No **lista){
+	*lista = NULL;
+}
+
+int listaEstaVazia(No *lista){
+	if(lista == NULL){
+		return 1;
+	}
+	
+	return 0;
+}
+
+void imprimirLista(No *lista){
+	No *noAtual = lista;
+	if (listaEstaVazia(lista) == 1){
+		printf("A lista está vazia!\n");
+		return;
+	}
+	
+	printf("lista: [");
+	while(noAtual != NULL){
+		printf("%d", noAtual->dado);
+		noAtual = noAtual->proximo;
+	}
+	printf("]");
+}
+
+void insereInicioLista(No **lista, int valor){ //lista recebe o endereço do ponteiro (duplo apontamento)
+	No *novo;
+	
+	novo = (No *)malloc(sizeof(No)); //atribuindo ponteiro para o endereço onde foi alocada memória para a quantidade pedida
+	novo->dado = valor; // atribuindo à propriedade dado o valor recebido
+	
+	if(listaEstaVazia(*lista) == 1){
+		novo->proximo = NULL; // se for o último item da lista, o ponteiro para o próximo será nulo
+	} else {
+		novo->proximo = *lista; // atribuindo ao ponteiro para o próximo valor o ponteiro do início da lista
+	}
+	
+	*lista = novo; // substitui o ponteiro do endereço de memória do início para o ponteiro para o endereço de memória do ponteiro novo
+}
+
+void insereFinalLista(No **lista, int valor){
+	No *novo;
+	No *aux = *lista;
+	
+	novo = (No *)malloc(sizeof(No));
+	novo->dado = valor;
+	novo->proximo = NULL; 
+	
+	if(listaEstaVazia(*lista) == 1)
+		aux->proximo = NULL;	
+	
+	while(aux->proximo != NULL)
+		aux = aux->proximo; //encontra o último nó
+	
+	aux->proximo = novo; //substitui aux pelo novo nó
+	return;	
+}	
+
+void removeInicioLista(No **lista){
+	No *aux = *lista; //auxiliar recebe o ponteiro para o inicio da lista
+	
+	if(listaEstaVazia(*lista)){ 
+		printf("A lista está vazia!\n");
+		return;
+	}
+	
+	*lista = aux->proximo; // o antigo ponteiro para o início da fila recebe o ponteiro armazenado em próximo 
+	free(aux); // liberação de memória do conteúdo do ponteiro aux(antigo início) conteúdo(dado e próximo)
+}
+
+void removeFinalLista(No **lista){
+	No *atual = *lista;
+	No *anterior;
+	
+	if(listaEstaVazia(*lista)){
+		printf("A Lista está vazia!\n");
+		return;
+	}
+	
+	while(atual->proximo != NULL){
+		anterior = atual;
+		atual = atual->proximo;
+	}
+	
+	if(atual == *lista)
+		*lista = NULL;
+	else
+		anterior->proximo = NULL;
+		
+	free(atual);
+	return;
+}
+
+
+
+

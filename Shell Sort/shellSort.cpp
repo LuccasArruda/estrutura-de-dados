@@ -1,5 +1,3 @@
-[22:17, 11/03/2024] Ereque: #include <stdio.h>
-
 void shellsortS(int *vet, int n){
     int i, j, k, indk, aux;
 
