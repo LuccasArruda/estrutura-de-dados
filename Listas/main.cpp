@@ -1,27 +1,62 @@
 #include <stdio.h>
+#include <locale.h>
 #include "operacoes.c"
 
 int main(){
 	No* lista;
 	
+	setlocale(LC_ALL, "");
+	
 	iniciarLista(&lista);
 	
+	if(pesquisaElemento(lista, 1) != NULL)
+		printf("Funcionou!\n");
+	else
+		printf("Num deu :(\n");
+		
 	imprimirLista(lista);
 	insereInicioLista(&lista, 1);
+	
+	if(pesquisaElemento(lista, 1) != NULL)
+		printf("Funcionou!\n");
+	else
+		printf("Num deu :(\n");
+
+	insereFinalLista(&lista, 2);
+	imprimirLista(lista);	
+	insereFinalLista(&lista, 5);
 	imprimirLista(lista);
-	insereInicioLista(&lista, 4);
-	insereInicioLista(&lista, 6);
+//	imprimirLista(lista);
+//	insereInicioLista(&lista, 2);
+//	insereInicioLista(&lista, 3);
+//	imprimirLista(lista);
+//	insereFinalLista(&lista, 4);
+//	insereFinalLista(&lista, 5);
+//	imprimirLista(lista);
+//	insereInicioLista(&lista, 6);
+//	imprimirLista(lista);
+//	removeInicioLista(&lista);
+//	removeFinalLista(&lista);
+//	imprimirLista(lista);
+//	removeInicioLista(&lista);
+//	imprimirLista(lista);
+	
+	if(pesquisaElemento(lista, 1) != NULL){
+		printf("Valor encontrado!\n");
+	} else {
+		printf("Valor não encontrado!\n");
+	}
+	
+	insereListaOrdenado(&lista, 4);
 	imprimirLista(lista);
-	insereFinalLista(&lista, 8);
-	insereFinalLista(&lista, 3);
+	insereListaOrdenado(&lista, 3);
 	imprimirLista(lista);
-	insereInicioLista(&lista, 43);
+	removeEspecifico(&lista, 3);
 	imprimirLista(lista);
-	removeInicioLista(&lista);
-	removeFinalLista(&lista);
+	removeEspecifico(&lista, 4);
 	imprimirLista(lista);
-	removeInicioLista(&lista);
-	imprimirLista(lista);
+	esvaziaLista(&lista);
+//	imprimirLista(lista);
 	
 	return 0;
 }

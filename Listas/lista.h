@@ -21,8 +21,12 @@ void iniciarLista(No **);
 int listaEstaVazia(No *);
 
 void imprimirLista(No *);
-void insereInicioLista(No **, int);
+void insereInicioLista(No **, int); 
 void insereFinalLista(No **, int);
+No * pesquisaElemento(No *, int);
+void insereListaOrdenado(No **, int);
+void removeEspecifico(No **, int);
+void esvaziaLista(No **);
 
 void removeInicioLista(No **);
 void removeFinalLista(No **);

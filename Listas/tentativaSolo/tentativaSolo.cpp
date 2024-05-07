@@ -12,7 +12,9 @@ void iniciaFila(pessoa *fila){
 	fila = NULL;
 }
 
-void adicionaPessoaFila(no *fila, )
+void adicionaPessoaFila(no *fila, pessoa novaPessoa){
+	
+}
 
 int main(){
 	pessoa Pessoa1;
@@ -23,6 +25,6 @@ int main(){
 	
 	iniciaFila;
 
-	adicionaPessoaFila(, Pessoa1);
+	adicionaPessoaFila(&Pessoa1, Pessoa1);
 	return 0;
 }
